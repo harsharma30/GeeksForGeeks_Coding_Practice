@@ -15,6 +15,8 @@ public class Main {
             Solution ob = new Solution();
             int ans = ob.getSecondLargest(arr);
             System.out.println(ans);
+
+            System.out.println("~");
         }
     }
 }
@@ -26,22 +28,30 @@ public class Main {
 
 class Solution {
     public int getSecondLargest(int[] arr) {
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MIN_VALUE;
+    // Get the length of the array
+    int n = arr.length;
 
-        for (int num : arr) {
-            if (num > largest) {
-                secondLargest = largest;
-                largest = num;
-            } else if (num > secondLargest && num != largest) {
-                secondLargest = num;
-            }
-        }
+    // Initialize variables to track the largest and second largest values
+    int largest = 0;
+    int secondLargest = 0;
 
-        if (secondLargest == Integer.MIN_VALUE) {
-            return -1; // No second largest element found
-        } else {
-            return secondLargest;
+    // First loop: Find the largest element in the array
+    for (int it : arr) {
+        if (it > largest) {
+            largest = it; // Update largest if the current element is greater
         }
     }
+
+    // Second loop: Find the second largest element in the array
+    for (int it : arr) {
+        if (it == largest) continue; // Skip the largest element
+        if (it > secondLargest) {
+            secondLargest = it; // Update secondLargest if the current element is greater
+        }
+    }
+
+    // If secondLargest remains 0, it means no second largest element exists
+    // (e.g., when all elements are the same or there's only one element)
+    return secondLargest == 0 ? -1 : secondLargest;
+}
 }
