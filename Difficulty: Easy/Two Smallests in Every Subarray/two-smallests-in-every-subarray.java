@@ -15,7 +15,9 @@ class GFG {
             Solution obj = new Solution();
             int res = obj.pairWithMaxSum(a);
             System.out.println(res);
-        }
+        
+System.out.println("~");
+}
     }
 }
 
@@ -26,13 +28,19 @@ class GFG {
 class Solution {
     public int pairWithMaxSum(int[] arr) {
         // code here
-        if(arr.length==1)return -1;
-        int ans=0;
-        for(int i=0;i<arr.length-1;i++){
-            ans=Math.max(ans,arr[i]+arr[i+1]);
-        }
-        
-        return ans;
+       int n = arr.length;
+       
+       if(n==1) return -1;
+       
+       int sum = 0;
+       int max = Integer.MIN_VALUE;
+       for(int i = 1; i<n; i++){
+           sum = arr[i] + arr[i-1];
+           max = Math.max(max,sum);
+       }
+       
+       return max;
+       
     }
 }
 
