@@ -14,6 +14,7 @@ class Node {
 
 
 // } Driver Code Ends
+
 /*Complete the function below*/
 /*
 class Node{
@@ -23,22 +24,19 @@ class Node{
 }*/
 
 class Solution {
+    // Function to count nodes of a linked list.
     public int getCount(Node head) {
-        Node slow=head;
-        int count=0,temp=1;
-        Node fast=head.next;
-        while(fast!=null){
+        // code here
+        int count = 0;
+        Node current = head;
+        while(current!=null){
+            current = current.next;
             count++;
-            if(fast.next==null){
-                temp=0;
-                break;
-            }
-            slow=slow.next;
-            fast=fast.next.next;
         }
-        return 2*count+temp;
+        return count;
     }
 }
+
 
 //{ Driver Code Starts.
 
@@ -62,7 +60,9 @@ class LinkedList {
             }
             Solution ob = new Solution();
             System.out.println(ob.getCount(head));
-        }
+        
+System.out.println("~");
+}
     }
 }
 
